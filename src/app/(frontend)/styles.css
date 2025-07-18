@@ -1,3 +1,7 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Unbounded:wght@200..900&display=swap&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
   --font-mono: 'Roboto Mono', monospace;
 }
@@ -6,159 +10,100 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 18px;
-  line-height: 32px;
-
-  background: rgb(0, 0, 0);
-  -webkit-font-smoothing: antialiased;
+.container-class {
+  @apply container mx-auto my-16 lg:my-20 px-6 lg:px-16 lg:py-13
 }
 
-html,
-body,
-#app {
-  height: 100%;
-}
-
-body {
-  font-family: system-ui;
-  font-size: 18px;
-  line-height: 32px;
-
-  margin: 0;
-  color: rgb(1000, 1000, 1000);
-
-  @media (max-width: 1024px) {
-    font-size: 15px;
-    line-height: 24px;
+@layer utilities {
+  .rounded-custom {
+    border-radius: 20px;
   }
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+@theme {
+  --font-unbounded: "Unbounded", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+
+
+  --color-back: var(--back);
+
+  --color-primary: #CCFE00;
+  --color-greenBG: #F4FECD;
+  --color-blueBG: #CCD7F7;
+  --color-hover: #DBFF48;
+  --color-background: var(--background);
+  --color-label: var(--label);
+  --color-hoverText: var(--hoverText);
+
+
+  /* active */
+  --color-cityHover: var(--cityHover);
+  /* Input BG */
+  --color-inputBG: var(--inputBG);
+  --color-heroBG: var(--heroBG);
+  --color-link: var(--link);
 }
 
-h1 {
-  margin: 40px 0;
-  font-size: 64px;
-  line-height: 70px;
-  font-weight: bold;
-
-  @media (max-width: 1024px) {
-    margin: 24px 0;
-    font-size: 42px;
-    line-height: 42px;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 38px;
-    line-height: 38px;
-  }
-
-  @media (max-width: 400px) {
-    font-size: 32px;
-    line-height: 32px;
-  }
+:root {
+  --background: #F3F4F4;
+  --heroBG: var(--color-gray-950);
+  --back: #fff;
+  --label: #12121266;
+  --hoverText: #121212;
+  --cityHover: var(--color-gray-200);
+  --inputBG: #fff;
+  --link: #121212;
 }
 
-p {
-  margin: 24px 0;
-
-  @media (max-width: 1024px) {
-    margin: calc(var(--base) * 0.75) 0;
-  }
+.dark {
+  --background: #2C2C2C;
+  --heroBG: #2c2c2c;
+  --back: #121212;
+  --label: #fff;
+  --hoverText: #CCFE00;
+  --cityHover: #444;
+  --inputBG: #242424;
+  --link: #fff;
 }
 
-a {
-  color: currentColor;
-
-  &:focus {
-    opacity: 0.8;
-    outline: none;
-  }
-
-  &:active {
-    opacity: 0.7;
-    outline: none;
-  }
+h2 {
+  @apply font-unbounded text-4xl pb-12 text-center;
 }
 
-svg {
-  vertical-align: middle;
+/* Headings */
+.payload-richtext h1 {
+  @apply text-6xl font-unbounded leading-tight mt-8 mb-6 scroll-mt-[100px];
 }
 
-.home {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  padding: 45px;
-  max-width: 1024px;
-  margin: 0 auto;
-  overflow: hidden;
+.payload-richtext h2 {
+  @apply text-3xl leading-tight font-semibold mt-8 mb-5 scroll-mt-[100px];
+}
 
-  @media (max-width: 400px) {
-    padding: 24px;
-  }
+.payload-richtext h3 {
+  @apply text-2xl leading-snug font-semibold mt-7 mb-4 scroll-mt-[100px];
+}
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
+.payload-richtext h4 {
+  @apply text-xl leading-snug font-semibold mt-6 mb-4 scroll-mt-[100px];
+}
 
-    h1 {
-      text-align: center;
-    }
-  }
+.payload-richtext h5 {
+  @apply text-lg leading-normal font-semibold mt-5 mb-3 scroll-mt-[100px];
+}
 
-  .links {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.payload-richtext h6 {
+  @apply text-base leading-normal font-semibold mt-4 mb-3 scroll-mt-[100px];
+}
 
-    a {
-      text-decoration: none;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-    }
+.payload-richtext p {
+  @apply text-lg md:text-2xl font-light;
+}
 
-    .admin {
-      color: rgb(0, 0, 0);
-      background: rgb(1000, 1000, 1000);
-      border: 1px solid rgb(0, 0, 0);
-    }
+.adv-richtext h6 {
+  @apply font-unbounded font-normal; 
+}
 
-    .docs {
-      color: rgb(1000, 1000, 1000);
-      background: rgb(0, 0, 0);
-      border: 1px solid rgb(1000, 1000, 1000);
-    }
-  }
-
-  .footer {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    @media (max-width: 1024px) {
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    .codeLink {
-      text-decoration: none;
-      padding: 0 0.5rem;
-      background: rgb(60, 60, 60);
-      border-radius: 4px;
-    }
-  }
+.adv-richtext p {
+  @apply text-base font-normal text-black/80; /* Or use rem like 1rem */
 }

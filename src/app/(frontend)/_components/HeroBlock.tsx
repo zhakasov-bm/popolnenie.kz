@@ -1,0 +1,42 @@
+'use client'
+
+import { CITY_PREPOSITIONAL } from '@/app/utils/cities'
+import { useCurrentCity } from '@/app/utils/useCurrentCity'
+import { Page } from '@/payload-types'
+import { RichText } from '@payloadcms/richtext-lexical/react'
+
+export default function HeroBlock({ page }: { page: Page }) {
+  const [currentCity] = useCurrentCity()
+  const cityText = currentCity ? CITY_PREPOSITIONAL[currentCity] : ''
+
+  return (
+    <section className="container mx-auto pt-28 md:pt-8 relative font-unbounded">
+      {(page.layout ?? []).map((block, id) => {
+        if (block.blockType === 'heroblock') {
+          return (
+            <div key={id} className="flex flex-col justify-center items-center text-center">
+              <div className="flex flex-col gap-4 md:max-w-5xl px-6">
+                <h1 className="text-6xl md:leading-14 md:pt-16">
+                  {block.heading} {cityText && <span>{cityText}</span>}
+                </h1>
+                <RichText data={block.subheading} />
+              </div>
+
+              <div className="flex flex-col gap-6 md:flex-row md:gap-8 px-6 md:px-12 mt-0 md:mt-20 md:max-w-5xl w-full items-center justify-between">
+                {block.statistics?.map((item, i) => (
+                  <div className="flex flex-col gap-1 md:items-start pt-12" key={i}>
+                    <h2 className="text-5xl md:text-6xl">{item.text}</h2>
+                    <p className="text-base font-light">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+              <button className="mt-16 w-auto md:min-w-fit px-12 py-4 max-w-fit font-unbounded bg-primary text-black rounded-custom cursor-pointer hover:bg-hover transition">
+                {block.button}
+              </button>
+            </div>
+          )
+        }
+      })}
+    </section>
+  )
+}

@@ -69,6 +69,8 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    pages: Page;
+    posts: Post;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -77,6 +79,8 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
+    posts: PostsSelect<false> | PostsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -158,6 +162,201 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: string;
+  name: string;
+  layout?:
+    | (
+        | {
+            heading: string;
+            subheading: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            statistics: {
+              text: string;
+              value: string;
+              id?: string | null;
+            }[];
+            button?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'heroblock';
+          }
+        | {
+            advantagesTitle: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            advantages?:
+              | {
+                  advantage?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'advantagesblock';
+          }
+        | {
+            tarifTitle?: string | null;
+            tarifs?:
+              | {
+                  icon?: (string | null) | Media;
+                  type?: string | null;
+                  price?: string | null;
+                  commission?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tarifblock';
+          }
+        | {
+            stepTitle?: string | null;
+            steps?:
+              | {
+                  icon?: (string | null) | Media;
+                  title?: string | null;
+                  message?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'stepsblock';
+          }
+        | {
+            heading: string;
+            members?:
+              | {
+                  avatar: string | Media;
+                  name: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'team';
+          }
+        | {
+            heading: string;
+            reviews?:
+              | {
+                  author: string;
+                  position: string;
+                  message: string;
+                  avatar: string | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'reviews';
+          }
+        | {
+            heading: string;
+            logos?:
+              | {
+                  logo: string | Media;
+                  logoDark?: (string | null) | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'brands';
+          }
+      )[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: string;
+  name: string;
+  heading: string;
+  subheading: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  button?: string | null;
+  slug: string;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  includedInBlog?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -170,6 +369,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
+      } | null)
+    | ({
+        relationTo: 'posts';
+        value: string | Post;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -252,6 +459,138 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  name?: T;
+  layout?:
+    | T
+    | {
+        heroblock?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              statistics?:
+                | T
+                | {
+                    text?: T;
+                    value?: T;
+                    id?: T;
+                  };
+              button?: T;
+              id?: T;
+              blockName?: T;
+            };
+        advantagesblock?:
+          | T
+          | {
+              advantagesTitle?: T;
+              advantages?:
+                | T
+                | {
+                    advantage?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        tarifblock?:
+          | T
+          | {
+              tarifTitle?: T;
+              tarifs?:
+                | T
+                | {
+                    icon?: T;
+                    type?: T;
+                    price?: T;
+                    commission?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        stepsblock?:
+          | T
+          | {
+              stepTitle?: T;
+              steps?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                    message?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        team?:
+          | T
+          | {
+              heading?: T;
+              members?:
+                | T
+                | {
+                    avatar?: T;
+                    name?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        reviews?:
+          | T
+          | {
+              heading?: T;
+              reviews?:
+                | T
+                | {
+                    author?: T;
+                    position?: T;
+                    message?: T;
+                    avatar?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        brands?:
+          | T
+          | {
+              heading?: T;
+              logos?:
+                | T
+                | {
+                    logo?: T;
+                    logoDark?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts_select".
+ */
+export interface PostsSelect<T extends boolean = true> {
+  name?: T;
+  heading?: T;
+  subheading?: T;
+  button?: T;
+  slug?: T;
+  content?: T;
+  includedInBlog?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
