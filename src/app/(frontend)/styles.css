@@ -11,7 +11,7 @@
 }
 
 .container-class {
-  @apply container mx-auto my-16 lg:my-20 px-6 lg:px-16 lg:py-13
+  @apply container mx-auto my-16 lg:my-16 px-6 lg:px-16 lg:py-13
 }
 
 @layer utilities {
@@ -72,11 +72,11 @@ h2 {
 }
 
 .payload-richtext ul {
-  @apply list-disc list-inside py-4 pl-3 font-extralight text-lg;
+  @apply list-disc list-inside py-4 pl-3 font-light text-xl;
 }
 
 .payload-richtext ol {
-  @apply list-decimal list-inside py-4 pl-3 font-extralight text-lg;;
+  @apply list-decimal list-inside py-4 pl-3 font-light text-xl;;
 }
 
 /* Headings */
@@ -105,7 +105,7 @@ h2 {
 }
 
 .payload-richtext p {
-  @apply text-lg font-extralight;
+  @apply text-xl font-light;
 }
 
 .adv-richtext h6 {
@@ -113,6 +113,10 @@ h2 {
 }
 
 .adv-richtext p {
-  @apply text-base font-normal text-black/80; /* Or use rem like 1rem */
+  @apply text-base font-normal text-black/80; 
+}
+
+.hero-richtext p {
+  @apply text-lg pt-4 md:text-2xl font-light text-center text-link/80
 }
 

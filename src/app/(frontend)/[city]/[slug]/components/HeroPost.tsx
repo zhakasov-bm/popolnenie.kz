@@ -9,14 +9,16 @@ export default function HeroPost({ post }: { post: Post }) {
   return (
     <section className="container mx-auto p-8 pb-20 sm:p-20">
       <div className="flex flex-col justify-center items-center text-center">
-        <div className="flex flex-col gap-4 md:max-w-5xl px-6">
+        <div className="flex flex-col gap-4 md:max-w-5xl px-6 mx-auto">
           <ClientCityHeading post={post} />
-          <RichText data={post.subheading} />
+          <div className="w-full text-left hero-richtext">
+            <RichText data={post.subheading} />
+          </div>
         </div>
         <CustomButton label={post.button || 'Заказать'} to="#form" />
       </div>
 
-      <div className="px-40 pt-24 flex items-center justify-center">
+      <div className="px-32 pt-24 flex items-center justify-center">
         {post.content && <SerializedRichText className="payload-richtext" data={post.content} />}
       </div>
     </section>

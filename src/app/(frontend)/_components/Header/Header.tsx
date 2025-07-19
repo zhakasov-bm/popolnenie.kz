@@ -57,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
       <div className="flex gap-2 md:gap-16 items-center">
         <Logo />
 
-        <ul className="flex space-x-6 text-link/70 cursor-pointer">
+        <ul className="flex space-x-6 text-link/70 cursor-pointer font-unbounded">
           <li>
             <Link href={'/'} className="hover:text-link">
               Главная
@@ -72,7 +72,7 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
 
             <ul
               ref={dropdownRef}
-              className={`absolute left-0 mt-2 w-48 bg-white text-black rounded shadow-lg transition-all z-50 ${
+              className={`absolute left-0 mt-2 w-48 bg-white text-black rounded shadow-lg transition-all z-50 font-inter ${
                 dropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
               }`}
             >

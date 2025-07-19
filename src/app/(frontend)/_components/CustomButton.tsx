@@ -19,7 +19,7 @@ export default function CustomButton({ label, to, className, onClick }: ButtonPr
   return (
     <button
       onClick={handleClick}
-      className={`w-auto mt-24 md:min-w-fit px-8 py-4 bg-primary font-unbounded text-black rounded-custom cursor-pointer hover:bg-hover transition ${className || ''}`}
+      className={`w-auto mt-16 md:min-w-fit px-16 py-4 bg-primary font-unbounded text-black rounded-custom cursor-pointer hover:bg-hover transition ${className || ''}`}
     >
       {label}
     </button>

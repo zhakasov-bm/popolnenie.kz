@@ -20,10 +20,12 @@ export default function HeroBlock({ page }: { page: Page }) {
                 <h1 className="text-6xl md:leading-16 md:pt-16">
                   {block.heading} {cityText && <span>{cityText}</span>}
                 </h1>
-                <RichText data={block.subheading} />
+                <div className="w-full text-left hero-richtext">
+                  <RichText data={block.subheading} />
+                </div>
               </div>
 
-              <div className="flex flex-col gap-6 md:flex-row md:gap-8 px-6 md:px-12 mt-0 md:mt-20 md:max-w-5xl w-full items-center justify-between">
+              <div className="flex flex-col gap-4 md:flex-row md:gap-8 px-6 md:px-12 mt-0 md:mt-16 md:mb-8 md:max-w-5xl w-full items-center justify-between">
                 {block.statistics?.map((item, i) => (
                   <div className="flex flex-col gap-1 md:items-start pt-12" key={i}>
                     <h3 className="text-5xl md:text-6xl">{item.text}</h3>

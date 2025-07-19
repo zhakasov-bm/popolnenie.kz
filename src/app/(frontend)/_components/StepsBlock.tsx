@@ -26,11 +26,11 @@ export default function StepsBlock({ layout }: Props) {
               backgroundSize: 'contain',
             }}
           >
-            <div className="px-40 pb-32 flex items-center justify-center">
-              {block.content && (
+            {block.content && (
+              <div className="px-40 pb-32 flex items-center justify-center">
                 <SerializedRichText className="payload-richtext" data={block.content} />
-              )}
-            </div>
+              </div>
+            )}
 
             <h2>{block.stepTitle}</h2>
 
@@ -46,7 +46,7 @@ export default function StepsBlock({ layout }: Props) {
 
                 return (
                   <div key={i} className="relative z-10 w-full flex flex-col items-center">
-                    <div className="flex w-full justify-between items-center relative z-10">
+                    <div className="flex w-full justify-between items-start relative z-10">
                       {isLeft ? (
                         <>
                           <div className="w-5/12 text-right">
