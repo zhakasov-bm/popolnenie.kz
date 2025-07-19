@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload'
+import { sharedBlocks } from '@/blocks/sharedBlocks'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -34,6 +35,13 @@ export const Posts: CollectionConfig = {
     {
       name: 'content',
       type: 'richText',
+    },
+    {
+      name: 'layout',
+      type: 'blocks',
+      required: false,
+      minRows: 0,
+      blocks: [...sharedBlocks],
     },
     {
       name: 'includedInBlog',

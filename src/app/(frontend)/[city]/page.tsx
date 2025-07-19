@@ -6,7 +6,9 @@ import HeroBlock from '../_components/HeroBlock'
 import AdvantagesBlock from '../_components/AdvantagesBlock'
 import TarifBlock from '../_components/TarifBlock'
 import StepsBlock from '../_components/StepsBlock'
-import ApplicationFormBlock from '../_components/ApplicationFormBlock'
+import ClientsBlock from '../_components/ClientsBlock'
+import TeamBlock from '../_components/TeamBlock'
+import ReviewsBlock from '../_components/ReviewsBlock'
 
 export default async function CityPage() {
   const payloadConfig = await config
@@ -22,10 +24,14 @@ export default async function CityPage() {
     <div>
       <BGraphic />
       <HeroBlock page={page} />
-      <AdvantagesBlock page={page} />
+      <AdvantagesBlock layout={page.layout} />
       <TarifBlock page={page} />
-      <StepsBlock page={page} />
-      <ApplicationFormBlock page={page} />
+      <StepsBlock layout={page.layout} />
+
+      <TeamBlock page={page} />
+      <ReviewsBlock page={page} />
+
+      <ClientsBlock page={page} />
     </div>
   )
 }

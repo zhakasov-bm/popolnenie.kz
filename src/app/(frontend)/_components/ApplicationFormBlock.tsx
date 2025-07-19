@@ -56,7 +56,7 @@ export default function ApplicationFormBlock({ page }: { page: Page }) {
   }
 
   return (
-    <section className="bg-background">
+    <section id="form" className="bg-background">
       {page.layout?.map((block, id) => {
         if (block.blockType !== 'application-form') return null
         const form = typeof block.form === 'object' ? block.form : null
@@ -119,12 +119,17 @@ export default function ApplicationFormBlock({ page }: { page: Page }) {
                   {form && form.confirmationMessage && <RichText data={form.confirmationMessage} />}
                 </div>
               ) : (
-                <button
-                  type="submit"
-                  className="bg-primary text-black mt-4 px-12 py-4 font-unbounded rounded-custom cursor-pointer hover:bg-hover transition"
-                >
-                  {form?.submitButtonLabel || 'Отправить'}
-                </button>
+                <div className="flex flex-col items-center gap-8">
+                  <button
+                    type="submit"
+                    className="bg-primary text-black mt-4 px-12 py-4 font-unbounded rounded-custom cursor-pointer hover:bg-hover transition"
+                  >
+                    {form?.submitButtonLabel || 'Отправить'}
+                  </button>
+                  <p className="font-extralight text-xs">
+                    Нажимая на кнопку, вы соглашаетесь с условиями о персональных данных
+                  </p>
+                </div>
               )}
             </form>
           </div>

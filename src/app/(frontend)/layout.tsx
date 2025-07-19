@@ -3,6 +3,8 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import Header from './_components/Header/Header'
 import './styles.css'
+import ApplicationFormBlock from './_components/ApplicationFormBlock'
+import ContactBlock from './_components/ContactBlock'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
@@ -20,11 +22,19 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   })
   const posts = postsResult.docs
 
+  const res = await payload.find({
+    collection: 'pages',
+    limit: 1,
+  })
+  const page = res.docs[0]
+
   return (
     <html lang="en">
       <body>
         <Header posts={posts} />
         <main>{children}</main>
+        <ApplicationFormBlock page={page} />
+        <ContactBlock page={page} />
       </body>
     </html>
   )

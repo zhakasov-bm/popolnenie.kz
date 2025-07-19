@@ -1,10 +1,14 @@
 import { RichText } from '@payloadcms/richtext-lexical/react'
-import { Page } from '@/payload-types'
+import { Page, Post } from '@/payload-types'
 
-export default function AdvantagesBlock({ page }: { page: Page }) {
+type Props = {
+  layout: Page['layout'] | Post['layout']
+}
+
+export default function AdvantagesBlock({ layout }: Props) {
   return (
     <section className="container-class pb-8">
-      {(page.layout ?? []).map((block, id) => {
+      {(layout ?? []).map((block, id) => {
         if (block.blockType === 'advantagesblock') {
           return (
             <div key={id}>

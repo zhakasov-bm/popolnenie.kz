@@ -201,46 +201,6 @@ export interface Page {
             blockType: 'heroblock';
           }
         | {
-            advantagesTitle: {
-              root: {
-                type: string;
-                children: {
-                  type: string;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            };
-            advantages?:
-              | {
-                  advantage?: {
-                    root: {
-                      type: string;
-                      children: {
-                        type: string;
-                        version: number;
-                        [k: string]: unknown;
-                      }[];
-                      direction: ('ltr' | 'rtl') | null;
-                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                      indent: number;
-                      version: number;
-                    };
-                    [k: string]: unknown;
-                  } | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'advantagesblock';
-          }
-        | {
             tarifTitle?: string | null;
             tarifs?:
               | {
@@ -254,20 +214,6 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'tarifblock';
-          }
-        | {
-            stepTitle?: string | null;
-            steps?:
-              | {
-                  icon?: (string | null) | Media;
-                  title?: string | null;
-                  message?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'stepsblock';
           }
         | {
             heading: string;
@@ -316,6 +262,89 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'application-form';
+          }
+        | {
+            heading: string;
+            description?: string | null;
+            address?: string | null;
+            phone?: string | null;
+            email?: string | null;
+            /**
+             * Вставьте ссылку с https://www.google.com/maps -> Поделиться -> Встроить карту
+             */
+            mapEmbedUrl?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contact-block';
+          }
+        | {
+            advantagesTitle: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            advantages?:
+              | {
+                  advantage?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'advantagesblock';
+          }
+        | {
+            stepTitle?: string | null;
+            steps?:
+              | {
+                  icon?: (string | null) | Media;
+                  title?: string | null;
+                  message?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            content?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'stepsblock';
           }
       )[]
     | null;
@@ -536,6 +565,79 @@ export interface Post {
     };
     [k: string]: unknown;
   } | null;
+  layout?:
+    | (
+        | {
+            advantagesTitle: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            advantages?:
+              | {
+                  advantage?: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  } | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'advantagesblock';
+          }
+        | {
+            stepTitle?: string | null;
+            steps?:
+              | {
+                  icon?: (string | null) | Media;
+                  title?: string | null;
+                  message?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            content?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'stepsblock';
+          }
+      )[]
+    | null;
   includedInBlog?: boolean | null;
   updatedAt: string;
   createdAt: string;
@@ -695,19 +797,6 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        advantagesblock?:
-          | T
-          | {
-              advantagesTitle?: T;
-              advantages?:
-                | T
-                | {
-                    advantage?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
         tarifblock?:
           | T
           | {
@@ -719,21 +808,6 @@ export interface PagesSelect<T extends boolean = true> {
                     type?: T;
                     price?: T;
                     commission?: T;
-                    id?: T;
-                  };
-              id?: T;
-              blockName?: T;
-            };
-        stepsblock?:
-          | T
-          | {
-              stepTitle?: T;
-              steps?:
-                | T
-                | {
-                    icon?: T;
-                    title?: T;
-                    message?: T;
                     id?: T;
                   };
               id?: T;
@@ -791,6 +865,47 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        'contact-block'?:
+          | T
+          | {
+              heading?: T;
+              description?: T;
+              address?: T;
+              phone?: T;
+              email?: T;
+              mapEmbedUrl?: T;
+              id?: T;
+              blockName?: T;
+            };
+        advantagesblock?:
+          | T
+          | {
+              advantagesTitle?: T;
+              advantages?:
+                | T
+                | {
+                    advantage?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        stepsblock?:
+          | T
+          | {
+              stepTitle?: T;
+              steps?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                    message?: T;
+                    id?: T;
+                  };
+              content?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;
@@ -806,6 +921,39 @@ export interface PostsSelect<T extends boolean = true> {
   button?: T;
   slug?: T;
   content?: T;
+  layout?:
+    | T
+    | {
+        advantagesblock?:
+          | T
+          | {
+              advantagesTitle?: T;
+              advantages?:
+                | T
+                | {
+                    advantage?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        stepsblock?:
+          | T
+          | {
+              stepTitle?: T;
+              steps?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                    message?: T;
+                    id?: T;
+                  };
+              content?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
   includedInBlog?: T;
   updatedAt?: T;
   createdAt?: T;

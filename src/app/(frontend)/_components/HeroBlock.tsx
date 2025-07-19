@@ -4,6 +4,7 @@ import { CITY_PREPOSITIONAL } from '@/app/utils/cities'
 import { useCurrentCity } from '@/app/utils/useCurrentCity'
 import { Page } from '@/payload-types'
 import { RichText } from '@payloadcms/richtext-lexical/react'
+import CustomButton from './CustomButton'
 
 export default function HeroBlock({ page }: { page: Page }) {
   const [currentCity] = useCurrentCity()
@@ -16,7 +17,7 @@ export default function HeroBlock({ page }: { page: Page }) {
           return (
             <div key={id} className="flex flex-col justify-center items-center text-center">
               <div className="flex flex-col gap-4 md:max-w-5xl px-6">
-                <h1 className="text-6xl md:leading-14 md:pt-16">
+                <h1 className="text-6xl md:leading-16 md:pt-16">
                   {block.heading} {cityText && <span>{cityText}</span>}
                 </h1>
                 <RichText data={block.subheading} />
@@ -25,14 +26,12 @@ export default function HeroBlock({ page }: { page: Page }) {
               <div className="flex flex-col gap-6 md:flex-row md:gap-8 px-6 md:px-12 mt-0 md:mt-20 md:max-w-5xl w-full items-center justify-between">
                 {block.statistics?.map((item, i) => (
                   <div className="flex flex-col gap-1 md:items-start pt-12" key={i}>
-                    <h2 className="text-5xl md:text-6xl">{item.text}</h2>
+                    <h3 className="text-5xl md:text-6xl">{item.text}</h3>
                     <p className="text-base font-light">{item.value}</p>
                   </div>
                 ))}
               </div>
-              <button className="mt-16 w-auto md:min-w-fit px-12 py-4 max-w-fit font-unbounded bg-primary text-black rounded-custom cursor-pointer hover:bg-hover transition">
-                {block.button}
-              </button>
+              <CustomButton label={block.button || 'Заказать'} to="#form" />
             </div>
           )
         }

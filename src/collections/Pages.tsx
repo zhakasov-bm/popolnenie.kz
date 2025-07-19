@@ -1,9 +1,9 @@
-import { AdvantagesBlock } from '@/blocks/AdvantagesBlock'
 import { ApplicationFormBlock } from '@/blocks/ApplicationFormBlock'
 import { BrandsBlock } from '@/blocks/BrandsBlock'
+import { ContactBlock } from '@/blocks/ContactBlock'
 import { HeroBlock } from '@/blocks/HeroBlock'
 import { ReviewsBlock } from '@/blocks/ReviewsBlock'
-import { StepsBlock } from '@/blocks/StepsBlock'
+import { sharedBlocks } from '@/blocks/sharedBlocks'
 import { TarifBlock } from '@/blocks/TarifBlock'
 import { TeamBlock } from '@/blocks/TeamBlock'
 import { CollectionConfig } from 'payload'
@@ -24,13 +24,13 @@ export const Pages: CollectionConfig = {
       minRows: 0,
       blocks: [
         HeroBlock,
-        AdvantagesBlock,
         TarifBlock,
-        StepsBlock,
         TeamBlock,
         ReviewsBlock,
         BrandsBlock,
         ApplicationFormBlock,
+        ContactBlock,
+        ...sharedBlocks,
       ],
     },
   ],

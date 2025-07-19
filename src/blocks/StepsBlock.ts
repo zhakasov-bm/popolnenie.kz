@@ -27,5 +27,9 @@ export const StepsBlock: Block = {
         },
       ],
     },
+    {
+      name: 'content',
+      type: 'richText',
+    },
   ],
 }
