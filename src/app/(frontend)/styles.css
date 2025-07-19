@@ -107,3 +107,4 @@ h2 {
 .adv-richtext p {
   @apply text-base font-normal text-black/80; /* Or use rem like 1rem */
 }
+

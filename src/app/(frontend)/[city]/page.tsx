@@ -6,6 +6,7 @@ import HeroBlock from '../_components/HeroBlock'
 import AdvantagesBlock from '../_components/AdvantagesBlock'
 import TarifBlock from '../_components/TarifBlock'
 import StepsBlock from '../_components/StepsBlock'
+import ApplicationFormBlock from '../_components/ApplicationFormBlock'
 
 export default async function CityPage() {
   const payloadConfig = await config
@@ -24,6 +25,7 @@ export default async function CityPage() {
       <AdvantagesBlock page={page} />
       <TarifBlock page={page} />
       <StepsBlock page={page} />
+      <ApplicationFormBlock page={page} />
     </div>
   )
 }
