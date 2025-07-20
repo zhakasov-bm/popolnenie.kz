@@ -60,7 +60,9 @@ export function MobileMenu({
             onClick={onOpenCityModal}
           >
             <PiMapPinFill />
-            {CITY_RU[currentCity ?? '']}
+            {typeof currentCity === 'string' && CITY_RU[currentCity]
+              ? CITY_RU[currentCity]
+              : 'Выберите город'}
           </button>
         </div>
 

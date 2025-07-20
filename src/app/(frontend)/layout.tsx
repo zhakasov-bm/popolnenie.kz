@@ -3,6 +3,7 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import Header from './_components/Header/Header'
 import './styles.css'
+import { unbounded, montserrat, inter } from '@/app/fonts'
 import ApplicationFormBlock from './_components/ApplicationFormBlock'
 import ContactBlock from './_components/ContactBlock'
 
@@ -29,7 +30,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const page = res.docs[0]
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${unbounded.variable} ${montserrat.variable} ${inter.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
