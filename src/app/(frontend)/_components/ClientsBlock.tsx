@@ -13,15 +13,14 @@ export default function ClientsBlock({ page }: { page: Page }) {
               <div className="grid grid-cols-2 md:grid-cols-5 md:gap-4">
                 {block.logos?.map((item, idx) => {
                   return (
-                    <div key={idx} className="p-2 md:p-6 w-full">
+                    <div key={idx} className="p-2 md:p-6 w-full flex items-center justify-center">
                       {typeof item.logo === 'object' && item.logo?.url && (
                         <Image
                           src={item.logo.url}
                           alt={item.logo.alt || 'Icon'}
-                          width={0}
-                          height={0}
-                          sizes="auto"
-                          className="w-full h-auto object-contain"
+                          width={120}
+                          height={120}
+                          className="object-contain"
                           draggable={false}
                         />
                       )}

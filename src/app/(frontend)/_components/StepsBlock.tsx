@@ -11,7 +11,7 @@ export default function StepsBlock({ layout }: Props) {
   const stepBlocks = (layout ?? []).filter((b) => b.blockType === 'stepsblock')
 
   return (
-    <section className="pb-20">
+    <section className="pb-8 md:pb-20">
       {stepBlocks.map((block, id) => {
         const steps = block.steps ?? []
 
@@ -63,7 +63,7 @@ export default function StepsBlock({ layout }: Props) {
                             </div>
                           )}
                           {/* Vertical line directly under the icon, only if not last */}
-                          {!isLast && <div className="w-1 h-24 bg-[#2C2C2C] z-0 p-0 m-0" />}
+                          {!isLast && <div className="w-1 h-36 bg-[#2C2C2C] z-0 p-0 m-0" />}
                         </div>
                         <div className="w-10/12 text-left flex flex-col justify-center">
                           <h4 className="font-unbounded pb-2 text-link">{step.title}</h4>

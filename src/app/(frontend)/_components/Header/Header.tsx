@@ -55,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
   const toggleMobileMenu = () => setIsMobileOpen((prev) => !prev)
 
   return (
-    <nav className="container mx-auto flex justify-between fixed z-[1000] bg-back md:bg-transparent md:static items-center py-5 md:py-8 px-8 md:px-0">
+    <nav className="container mx-auto flex justify-between fixed z-[1000] bg-back md:bg-transparent md:static items-center py-5 md:py-8 px-6 md:px-0">
       <div className="flex gap-2 md:gap-16 items-center">
         <Logo />
 
@@ -132,7 +132,7 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
 
         {/* Burger button (mobile only) */}
         <div className="flex gap-4 md:hidden z-50">
-          <CustomButton label="Заказать" className="!mt-0 !px-6 !py-2 !text-sm" to="#contact" />
+          <CustomButton label="Заказать" className="!m-0 !px-6 !py-2 !text-sm" to="#form" />
           <button onClick={toggleMobileMenu}>{isMobileOpen ? '' : <Menu size={40} />}</button>
         </div>
       </div>
