@@ -15,7 +15,7 @@ export const Logo = () => {
   //       : nav.logo
 
   return (
-    <Link href="https://simply-production.up.railway.app">
+    <Link href="/">
       {/* {typeof logo === 'object' && logo?.url && (
         <Image src={logo.url} alt={logo.alt || ''} width={120} height={50} draggable={false} />
       )} */}
