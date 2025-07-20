@@ -2,7 +2,7 @@ import { Page } from '@/payload-types'
 
 export default function ContactBlock({ page }: { page: Page }) {
   return (
-    <section id="contact" className="bg-[#2C2C2C]">
+    <section id="contact" className="bg-[#2C2C2C] border-t border-link/10">
       {(page.layout ?? []).map((block, id) => {
         if (block.blockType === 'contact-block') {
           return (
