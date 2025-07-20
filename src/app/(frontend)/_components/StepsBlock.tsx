@@ -48,7 +48,7 @@ export default function StepsBlock({ layout }: Props) {
                     {/* Mobile: icon left, text right; Desktop: alternate */}
                     <div className="flex w-full justify-between items-start relative z-10">
                       {/* Mobile layout: icon left, text right */}
-                      <div className="flex w-full md:hidden items-start gap-3">
+                      <div className="flex w-full md:hidden items-start gap-4">
                         <div className="w-2/12 flex flex-col items-center p-0 m-0">
                           {typeof step.icon === 'object' && step.icon?.url && (
                             <div>
