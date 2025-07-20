@@ -135,8 +135,8 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
         </div>
 
         {/* Burger button (mobile only) */}
-        <div className="flex gap-4 md:hidden z-50">
-          <CustomButton label="Заказать" className="!m-0 !px-6 !py-2 !text-sm" to="#form" />
+        <div className="flex gap-3 md:hidden z-50">
+          <CustomButton label="Заказать" className="!m-0 !px-4 !py-1 !text-xs" to="#form" />
           <button onClick={toggleMobileMenu}>{isMobileOpen ? '' : <Menu size={40} />}</button>
         </div>
       </div>
