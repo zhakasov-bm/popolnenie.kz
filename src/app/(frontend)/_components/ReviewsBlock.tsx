@@ -18,7 +18,7 @@ export default function ReviewsBlock({ page }: { page: Page }) {
                   {block.reviews?.map((review, idx) => (
                     <div
                       key={idx}
-                      className="flex-shrink-0 w-[calc(100vw-3rem)] md:w-auto flex flex-col gap-12 justify-between bg-white rounded-custom p-6"
+                      className="flex-shrink-0 w-[calc(100vw-3rem)] md:w-auto flex flex-col gap-12 justify-between bg-inputBG rounded-custom p-6"
                     >
                       <p className="text-link/70">{review.message}</p>
                       <div className="flex gap-3 items-center">

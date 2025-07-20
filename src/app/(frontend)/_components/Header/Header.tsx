@@ -16,6 +16,7 @@ import { handleScroll } from '@/app/utils/scroll'
 import { MobileMenu } from './MobileMenu'
 import type { Post } from '@/payload-types'
 import CustomButton from '../CustomButton'
+import ThemeSwitch from '../ThemeSwitch/ThemeSwitch'
 
 interface NavbarProps {
   posts: Post[]
@@ -76,7 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
 
               <ul
                 ref={dropdownRef}
-                className={`absolute left-0 mt-2 w-48 bg-white text-black rounded shadow-lg transition-all z-50 font-inter ${
+                className={`absolute left-0 mt-2 w-48 bg-inputBG text-black rounded text-link shadow-lg transition-all z-50 font-inter ${
                   dropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
                 }`}
               >
@@ -84,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
                   <li key={post.id}>
                     <Link
                       href={`/${currentCity}/${post.slug}`}
-                      className="block px-4 py-2 hover:bg-gray-100"
+                      className="block px-4 py-2 hover:bg-link/10"
                       onClick={() => {
                         setDropdownOpen(false)
                       }}
@@ -129,6 +130,9 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
           />
           +7 775 202 60 10
         </Link>
+        <div className="flex items-center justify-center w-10 h-10 cursor-pointer">
+          <ThemeSwitch />
+        </div>
 
         {/* Burger button (mobile only) */}
         <div className="flex gap-4 md:hidden z-50">

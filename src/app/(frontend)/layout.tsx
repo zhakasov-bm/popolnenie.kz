@@ -6,6 +6,7 @@ import './styles.css'
 import { unbounded, montserrat, inter } from '@/app/fonts'
 import ApplicationFormBlock from './_components/ApplicationFormBlock'
 import ContactBlock from './_components/ContactBlock'
+import { Providers } from './_components/providers/provider'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
@@ -35,10 +36,12 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
-        <Header posts={posts} />
-        <main>{children}</main>
-        <ApplicationFormBlock page={page} />
-        <ContactBlock page={page} />
+        <Providers>
+          <Header posts={posts} />
+          <main>{children}</main>
+          <ApplicationFormBlock page={page} />
+          <ContactBlock page={page} />
+        </Providers>
       </body>
     </html>
   )

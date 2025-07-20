@@ -2,24 +2,18 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-// import { useTheme } from 'next-themes'
+import { useTheme } from 'next-themes'
 
 export const Logo = () => {
-  //   const { resolvedTheme } = useTheme()
+  const { resolvedTheme } = useTheme()
 
-  //   const logo =
-  //     resolvedTheme === 'dark'
-  //       ? typeof nav.logoDark === 'object' && nav.logoDark?.url
-  //         ? nav.logoDark
-  //         : nav.logo // fallback
-  //       : nav.logo
+  const logo = resolvedTheme === 'dark' ? '/logo-dark.svg' : '/logo.svg'
+
+  if (!resolvedTheme) return null
 
   return (
     <Link href="/">
-      {/* {typeof logo === 'object' && logo?.url && (
-        <Image src={logo.url} alt={logo.alt || ''} width={120} height={50} draggable={false} />
-      )} */}
-      <Image src="/logo.svg" alt="simply-logo" width={120} height={50} draggable={false} />
+      <Image src={logo} alt="simply-logo" width={120} height={50} draggable={false} />
     </Link>
   )
 }
