@@ -10,10 +10,10 @@ export default function ClientsBlock({ page }: { page: Page }) {
             <div key={id}>
               <h2>{block.heading}</h2>
 
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-5 md:gap-4">
                 {block.logos?.map((item, idx) => {
                   return (
-                    <div key={idx} className="p-6 w-full">
+                    <div key={idx} className="p-2 md:p-6 w-full">
                       {typeof item.logo === 'object' && item.logo?.url && (
                         <Image
                           src={item.logo.url}

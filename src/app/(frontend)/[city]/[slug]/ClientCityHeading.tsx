@@ -6,7 +6,7 @@ export function ClientCityHeading({ post }: { post: any }) {
   const [currentCity] = useCurrentCity()
   const cityText = currentCity ? CITY_PREPOSITIONAL[currentCity] : ''
   return (
-    <h1 className="text-5xl font-unbounded md:leading-16">
+    <h1 className="text-[25px] md:text-5xl font-unbounded md:leading-16">
       {post.heading} {cityText && <span>{cityText}</span>}
     </h1>
   )

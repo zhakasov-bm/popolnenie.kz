@@ -9,7 +9,7 @@ export default function HeroPost({ post }: { post: Post }) {
   return (
     <section className="container mx-auto p-8 pb-20 sm:p-20">
       <div className="flex flex-col justify-center items-center text-center">
-        <div className="flex flex-col gap-4 md:max-w-5xl px-6 mx-auto">
+        <div className="flex flex-col gap-4 md:max-w-5xl md:px-6 mx-auto">
           <ClientCityHeading post={post} />
           <div className="w-full text-left hero-richtext">
             <RichText data={post.subheading} />

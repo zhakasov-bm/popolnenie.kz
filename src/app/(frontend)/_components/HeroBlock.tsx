@@ -17,7 +17,7 @@ export default function HeroBlock({ page }: { page: Page }) {
           return (
             <div key={id} className="flex flex-col justify-center items-center text-center">
               <div className="flex flex-col gap-4 md:max-w-5xl px-6">
-                <h1 className="text-6xl md:leading-16 md:pt-16">
+                <h1 className="text-[25px] md:text-6xl md:leading-16 md:pt-16">
                   {block.heading} {cityText && <span>{cityText}</span>}
                 </h1>
                 <div className="w-full text-left hero-richtext">

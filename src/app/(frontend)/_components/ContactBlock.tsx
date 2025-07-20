@@ -6,17 +6,17 @@ export default function ContactBlock({ page }: { page: Page }) {
       {(page.layout ?? []).map((block, id) => {
         if (block.blockType === 'contact-block') {
           return (
-            <div key={id} className="flex gap-4 text-white">
-              <div className="flex flex-col gap-10 w-1/2 pl-20 justify-center">
-                <h3 className="font-unbounded text-3xl">{block.heading}</h3>
-                <p className="text-xl font-extralight">{block.phone}</p>
-                <div className="flex flex-col gap-1 text-lg font-extralight">
+            <div key={id} className="flex flex-col md:flex-row gap-4 text-white">
+              <div className="flex flex-col gap-8 md:gap-10 md:w-1/2 p-6 md:pl-20 justify-center">
+                <h3 className="font-unbounded text-xl md:text-3xl">{block.heading}</h3>
+                <p className="text-lg md:text-xl font-extralight">{block.phone}</p>
+                <div className="flex flex-col gap-1 text-sm md:text-lg font-extralight">
                   <p>{block.description}</p>
                   <p>{block.address}</p>
                 </div>
               </div>
 
-              <div className=" h-[300px] md:h-[400px] w-1/2">
+              <div className=" h-[300px] md:h-[400px] md:w-1/2">
                 <iframe
                   src={block.mapEmbedUrl || ''}
                   width="100%"

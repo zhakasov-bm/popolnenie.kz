@@ -69,10 +69,13 @@ export default function ApplicationFormBlock({ page }: { page: Page }) {
               onSubmit={handleSubmit}
             >
               {form?.fields?.map((field: any) => (
-                <div key={field.id} className="flex flex-col gap-2 items-left w-fit mx-auto">
+                <div key={field.id} className="flex flex-col gap-2 items-left w-fit px-6 mx-auto">
                   <label htmlFor={field.name}>{field.label}</label>
                   {field.blockType === 'select' ? (
-                    <div role="radiogroup" className="flex flex-col gap-2 items-start w-140">
+                    <div
+                      role="radiogroup"
+                      className="flex flex-col gap-2 items-start w-90 md:w-140"
+                    >
                       {field.options?.map((option: any, idx: number) => (
                         <label key={option.id} className="flex items-center gap-2 cursor-pointer">
                           <input
@@ -94,7 +97,7 @@ export default function ApplicationFormBlock({ page }: { page: Page }) {
                         name: field.name,
                         required: field.required,
                         placeholder: field.placeholder,
-                        className: 'bg-inputBG rounded-xl pl-12 p-4 w-140',
+                        className: 'bg-inputBG rounded-xl pl-12 p-4 w-90 md:w-140',
                       }}
                       value={phone}
                       onChange={setPhone}
@@ -106,7 +109,7 @@ export default function ApplicationFormBlock({ page }: { page: Page }) {
                       id={field.name}
                       required={field.required}
                       placeholder={field.defaultValue}
-                      className="bg-inputBG rounded-xl p-4 w-140"
+                      className="bg-inputBG rounded-xl p-4 w-90 md:w-140"
                     />
                   )}
                 </div>
@@ -126,7 +129,7 @@ export default function ApplicationFormBlock({ page }: { page: Page }) {
                   >
                     {form?.submitButtonLabel || 'Отправить'}
                   </button>
-                  <p className="font-extralight text-xs">
+                  <p className="font-extralight text-xs px-6 text-center">
                     Нажимая на кнопку, вы соглашаетесь с условиями о персональных данных
                   </p>
                 </div>

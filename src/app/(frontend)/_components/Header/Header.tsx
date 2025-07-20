@@ -3,6 +3,7 @@
 import React, { useState, useRef } from 'react'
 import Link from 'next/link'
 import { Logo } from '../Logo/Logo'
+import { Menu } from 'lucide-react'
 import { PiMapPinFill } from 'react-icons/pi'
 import { FaPhoneAlt } from 'react-icons/fa'
 
@@ -52,56 +53,63 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLUListElement | null>(null)
 
+  // Mobile Menu
+  const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const toggleMobileMenu = () => setIsMobileOpen((prev) => !prev)
+
   return (
     <nav className="container mx-auto flex justify-between fixed z-[1000] bg-back md:bg-transparent md:static items-center py-4 md:py-8 px-8 md:px-0">
       <div className="flex gap-2 md:gap-16 items-center">
         <Logo />
 
-        <ul className="flex space-x-6 text-link/70 cursor-pointer font-unbounded">
-          <li>
-            <Link href={'/'} className="hover:text-link">
-              Главная
-            </Link>
-          </li>
-          <li
-            className="relative"
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
-          >
-            <div className="hover:text-link cursor-pointer">Услуги</div>
+        {/* Desktop Menu */}
+        <div className="hidden md:flex justify-around">
+          <ul className="flex gap-6 text-link/70 cursor-pointer font-unbounded">
+            <li>
+              <Link href={'/'} className="hover:text-link">
+                Главная
+              </Link>
+            </li>
+            <li
+              className="relative"
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              <div className="hover:text-link cursor-pointer">Услуги</div>
 
-            <ul
-              ref={dropdownRef}
-              className={`absolute left-0 mt-2 w-48 bg-white text-black rounded shadow-lg transition-all z-50 font-inter ${
-                dropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-              }`}
-            >
-              {posts.map((post: any) => (
-                <li key={post.id}>
-                  <Link
-                    href={`/${currentCity}/${post.slug}`}
-                    className="block px-4 py-2 hover:bg-gray-100"
-                    onClick={() => setDropdownOpen(false)}
-                  >
-                    {post.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </li>
-          <li>
-            <Link
-              href={'#'}
-              className="hover:text-link"
-              onClick={(e) => {
-                e.preventDefault()
-                handleScroll('contact')
-              }}
-            >
-              Контакты
-            </Link>
-          </li>
-        </ul>
+              <ul
+                ref={dropdownRef}
+                className={`absolute left-0 mt-2 w-48 bg-white text-black rounded shadow-lg transition-all z-50 font-inter ${
+                  dropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+                }`}
+              >
+                {posts.map((post: any) => (
+                  <li key={post.id}>
+                    <Link
+                      href={`/${currentCity}/${post.slug}`}
+                      className="block px-4 py-2 hover:bg-gray-100"
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      {post.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+            <li>
+              <Link
+                href={'#'}
+                className="hover:text-link"
+                onClick={(e) => {
+                  e.preventDefault()
+                  handleScroll('contact')
+                }}
+              >
+                Контакты
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div className="flex gap-2 md:gap-5">
@@ -122,6 +130,11 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
           />
           +7 775 202 60 10
         </Link>
+
+        {/* Burger button (mobile only) */}
+        <button className="md:hidden z-50" onClick={toggleMobileMenu}>
+          {isMobileOpen ? '' : <Menu size={40} />}
+        </button>
       </div>
 
       {isCityModalOpen && (

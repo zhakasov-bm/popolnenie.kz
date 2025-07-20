@@ -10,7 +10,7 @@ export default function TeamBlock({ page }: { page: Page }) {
             <div key={id}>
               <h2>{block.heading}</h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-1 py-5">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-1 py-5">
                 {block.members?.map((item, idx) => {
                   return (
                     <div key={idx} className="flex flex-col items-center text-center">
