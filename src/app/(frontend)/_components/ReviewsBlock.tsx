@@ -7,7 +7,7 @@ import 'react-phone-input-2/lib/style.css'
 
 export default function ReviewsBlock({ page }: { page: Page }) {
   return (
-    <section className="bg-background">
+    <section id="reviews" className="bg-background">
       {(page.layout ?? []).map((block, id) => {
         if (block.blockType === 'reviews') {
           return (

@@ -10,6 +10,7 @@ import StepsBlock from './_components/StepsBlock'
 import TeamBlock from './_components/TeamBlock'
 import ClientsBlock from './_components/ClientsBlock'
 import ReviewsBlock from './_components/ReviewsBlock'
+import FloatingNav from './_components/FloatingNav'
 
 export default async function HomePage() {
   const payloadConfig = await config
@@ -25,6 +26,7 @@ export default async function HomePage() {
     <div>
       <BGraphic />
       <HeroBlock page={page} />
+      <FloatingNav blocks={page.layout ?? []} />
       <AdvantagesBlock layout={page.layout} />
       <TarifBlock page={page} />
       <StepsBlock layout={page.layout} />

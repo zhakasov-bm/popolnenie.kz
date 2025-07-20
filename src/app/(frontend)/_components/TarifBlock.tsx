@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function TarifBlock({ page }: { page: Page }) {
   return (
-    <section className="container-class pb-8">
+    <section id="tarifblock" className="container-class pb-8">
       {(page.layout ?? []).map((block, id) => {
         if (block.blockType === 'tarifblock') {
           return (

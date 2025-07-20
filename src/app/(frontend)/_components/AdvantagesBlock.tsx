@@ -7,7 +7,7 @@ type Props = {
 
 export default function AdvantagesBlock({ layout }: Props) {
   return (
-    <section className="container-class pb-8">
+    <section id="advantagesblock" className="container-class pb-8">
       {(layout ?? []).map((block, id) => {
         if (block.blockType === 'advantagesblock') {
           return (

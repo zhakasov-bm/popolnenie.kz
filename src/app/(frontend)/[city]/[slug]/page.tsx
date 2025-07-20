@@ -6,6 +6,7 @@ import BGraphic from '../../_components/BGraphic'
 import StepsBlock from '../../_components/StepsBlock'
 import HeroPost from './components/HeroPost'
 import AdvantagesBlock from '../../_components/AdvantagesBlock'
+import FloatingNav from '../../_components/FloatingNav'
 
 interface Props {
   params: Promise<{
@@ -41,6 +42,7 @@ export default async function Page({ params }: Props) {
     <>
       <BGraphic />
       <HeroPost post={post} />
+      <FloatingNav blocks={post.layout ?? []} />
 
       {advantagesBlock && <AdvantagesBlock layout={post.layout} />}
       {stepsBlock && <StepsBlock layout={post.layout} />}

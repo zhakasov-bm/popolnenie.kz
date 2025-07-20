@@ -11,7 +11,7 @@ export default function StepsBlock({ layout }: Props) {
   const stepBlocks = (layout ?? []).filter((b) => b.blockType === 'stepsblock')
 
   return (
-    <section className="pb-8 md:pb-20">
+    <section id="stepsblock" className="pb-8 md:pb-20">
       {stepBlocks.map((block, id) => {
         const steps = block.steps ?? []
 

@@ -1,5 +1,7 @@
 'use client'
 
+import clsx from 'clsx'
+
 type ButtonProps = {
   label: string
   to?: string
@@ -23,12 +25,16 @@ export default function CustomButton({
     }
   }
 
-  const baseStyle = noDefault
-    ? ''
-    : 'w-auto mt-16 md:min-w-fit px-16 py-4 bg-primary font-unbounded text-black rounded-custom cursor-pointer hover:bg-hover transition'
+  const buttonClass = clsx(
+    'font-unbounded cursor-pointer rounded-custom',
+    noDefault
+      ? 'text-sm text-primary bg-black hover:text-white px-3 py-2'
+      : 'w-auto mt-16 md:min-w-fit px-16 py-4 bg-primary text-black hover:bg-hover transition',
+    className,
+  )
 
   return (
-    <button onClick={handleClick} className={`${baseStyle} ${className || ''}`}>
+    <button onClick={handleClick} className={`${buttonClass} ${className || ''}`}>
       {label}
     </button>
   )
