@@ -18,7 +18,7 @@ export default function HeroPost({ post }: { post: Post }) {
         <CustomButton label={post.button || 'Заказать'} to="#form" />
       </div>
 
-      <div className="px-32 pt-24 flex items-center justify-center">
+      <div className="md:px-32 pt-24 flex items-center justify-center">
         {post.content && <SerializedRichText className="payload-richtext" data={post.content} />}
       </div>
     </section>

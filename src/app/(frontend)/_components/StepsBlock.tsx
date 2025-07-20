@@ -27,7 +27,7 @@ export default function StepsBlock({ layout }: Props) {
             }}
           >
             {block.content && (
-              <div className="px-40 pb-32 flex items-center justify-center">
+              <div className="md:px-40 pb-32 flex items-center justify-center">
                 <SerializedRichText className="payload-richtext" data={block.content} />
               </div>
             )}

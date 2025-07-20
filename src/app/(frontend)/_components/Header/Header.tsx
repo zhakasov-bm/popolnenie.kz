@@ -13,12 +13,9 @@ import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { CityModal } from './CityModal'
 import { handleScroll } from '@/app/utils/scroll'
-
-export interface Post {
-  id: string
-  name: string
-  slug: string
-}
+import { MobileMenu } from './MobileMenu'
+import type { Post } from '@/payload-types'
+import CustomButton from '../CustomButton'
 
 interface NavbarProps {
   posts: Post[]
@@ -58,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
   const toggleMobileMenu = () => setIsMobileOpen((prev) => !prev)
 
   return (
-    <nav className="container mx-auto flex justify-between fixed z-[1000] bg-back md:bg-transparent md:static items-center py-4 md:py-8 px-8 md:px-0">
+    <nav className="container mx-auto flex justify-between fixed z-[1000] bg-back md:bg-transparent md:static items-center py-5 md:py-8 px-8 md:px-0">
       <div className="flex gap-2 md:gap-16 items-center">
         <Logo />
 
@@ -88,7 +85,9 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
                     <Link
                       href={`/${currentCity}/${post.slug}`}
                       className="block px-4 py-2 hover:bg-gray-100"
-                      onClick={() => setDropdownOpen(false)}
+                      onClick={() => {
+                        setDropdownOpen(false)
+                      }}
                     >
                       {post.name}
                     </Link>
@@ -132,9 +131,29 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
         </Link>
 
         {/* Burger button (mobile only) */}
-        <button className="md:hidden z-50" onClick={toggleMobileMenu}>
-          {isMobileOpen ? '' : <Menu size={40} />}
-        </button>
+        <div className="flex gap-4 md:hidden z-50">
+          <CustomButton label="Заказать" className="!mt-0 !px-6 !py-2 !text-sm" to="#contact" />
+          <button onClick={toggleMobileMenu}>{isMobileOpen ? '' : <Menu size={40} />}</button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      <div
+        className={`
+          fixed top-0 right-0 h-full w-80 bg-white shadow-lg font-inter z-50 px-8 py-10 flex flex-col gap-4
+          transform transition-transform duration-300 ease-in-out
+          ${isMobileOpen ? 'translate-x-0' : 'translate-x-full'}
+          ${isMobileOpen ? '' : 'pointer-events-none'}
+        `}
+        style={{ visibility: isMobileOpen ? 'visible' : 'hidden' }}
+      >
+        <MobileMenu
+          toggleMobileMenu={toggleMobileMenu}
+          isMobileOpen={isMobileOpen}
+          post={posts}
+          onOpenCityModal={() => setIsCityModalOpen(true)}
+          currentCity={currentCity}
+        />
       </div>
 
       {isCityModalOpen && (
@@ -143,6 +162,7 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
           onSelect={(city) => {
             changeCity(city)
             setIsCityModalOpen(false)
+            setIsMobileOpen(false)
           }}
           onClose={() => setIsCityModalOpen(false)}
         />

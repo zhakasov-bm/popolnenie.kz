@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { ALLOWED_CITIES, CITY_RU } from '@/app/utils/cities'
-import { IoClose } from 'react-icons/io5'
+import { X } from 'lucide-react'
 
 type CityModalProps = {
   currentCity: string
@@ -23,7 +23,7 @@ export const CityModal = ({ currentCity, onSelect, onClose }: CityModalProps) =>
       <div className="bg-background rounded-custom p-6 min-w-[300px] max-h-[80vh] overflow-y-auto">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-medium">Выберите город</h3>
-          <IoClose onClick={onClose} width={40} height={40} className="cursor-pointer" />
+          <X onClick={onClose} size={28} className="cursor-pointer" />
         </div>
 
         <ul>
