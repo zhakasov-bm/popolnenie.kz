@@ -123,7 +123,10 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
             : 'Выберите город'}
         </button>
 
-        <Link href="tel:+77752026010" className="hidden text-base md:flex items-center gap-2 group">
+        <Link
+          href="tel:+77752026010"
+          className="hidden text-base md:flex items-center gap-2 group font-unbounded"
+        >
           <FaPhoneAlt
             size={20}
             className="transition-transform duration-300 group-hover:rotate-12 font-unbounded"

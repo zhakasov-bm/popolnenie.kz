@@ -102,7 +102,7 @@ h2 {
 }
 
 .payload-richtext h5 {
-  @apply text-lg leading-normal font-semibold mt-5 mb-3 scroll-mt-[100px];
+  @apply text-lg leading-normal font-semibold mt-5 mb-3 scroll-mt-[100px] font-unbounded;
 }
 
 .payload-richtext h6 {
