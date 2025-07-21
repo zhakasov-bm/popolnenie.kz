@@ -7,6 +7,7 @@ import { unbounded, montserrat, inter } from '@/app/fonts'
 import ApplicationFormBlock from './_components/ApplicationFormBlock'
 import ContactBlock from './_components/ContactBlock'
 import { Providers } from './_components/providers/provider'
+import Footer from './_components/Footer/Footer'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
@@ -20,7 +21,8 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const payload = await getPayload({ config })
   const postsResult = await payload.find({
     collection: 'posts',
-    limit: 10, // Get first 10 posts for navigation
+    sort: 'createdAt',
+    limit: 10,
   })
   const posts = postsResult.docs
 
@@ -41,6 +43,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
           <main>{children}</main>
           <ApplicationFormBlock page={page} />
           <ContactBlock page={page} />
+          <Footer posts={posts} />
         </Providers>
       </body>
     </html>
