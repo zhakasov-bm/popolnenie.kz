@@ -11,7 +11,7 @@ export function useCurrentCity() {
       const stored = localStorage.getItem('selectedCity')
       if (stored && ALLOWED_CITIES.includes(stored)) return stored
     }
-    return null // Город не выбран по умолчанию
+    return 'default'
   })
 
   useEffect(() => {
@@ -25,9 +25,10 @@ export function useCurrentCity() {
       const stored = localStorage.getItem('selectedCity')
       if (stored && stored !== currentCity && ALLOWED_CITIES.includes(stored)) {
         setCurrentCity(stored)
+      } else {
+        setCurrentCity('default')
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 
   return [currentCity, setCurrentCity] as const
