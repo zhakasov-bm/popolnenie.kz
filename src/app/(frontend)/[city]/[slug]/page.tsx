@@ -9,9 +9,10 @@ import AdvantagesBlock from '../../_components/AdvantagesBlock'
 import FloatingNav from '../../_components/FloatingNav'
 
 interface Props {
-  params: Promise<{
+  params: {
+    city: string
     slug: string
-  }>
+  }
 }
 
 import { CITY_METADATA } from '@/app/utils/cityMetadata'
@@ -20,7 +21,10 @@ import type { Metadata } from 'next'
 export async function generateMetadata({
   params,
 }: {
-  params: { city: string; slug: string }
+  params: {
+    city: string
+    slug: string
+  }
 }): Promise<Metadata> {
   const meta = CITY_METADATA[params.city]
 
@@ -33,7 +37,7 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: Props) {
-  const { slug } = await params
+  const { slug } = params
 
   const payloadClient = await getPayload({ config })
 
@@ -53,7 +57,6 @@ export default async function Page({ params }: Props) {
   const post = postResult.docs[0]
 
   const advantagesBlock = post.layout?.find((block: any) => block.blockType === 'advantagesblock')
-
   const stepsBlock = post.layout?.find((block: any) => block.blockType === 'stepsblock')
 
   return (
