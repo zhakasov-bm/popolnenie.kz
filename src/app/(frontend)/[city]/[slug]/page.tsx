@@ -1,5 +1,3 @@
-// app/posts/[slug]/page.tsx
-
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import BGraphic from '../../_components/BGraphic'
@@ -8,23 +6,13 @@ import HeroPost from './components/HeroPost'
 import AdvantagesBlock from '../../_components/AdvantagesBlock'
 import FloatingNav from '../../_components/FloatingNav'
 
-interface Props {
-  params: {
-    city: string
-    slug: string
-  }
-}
-
 import { CITY_METADATA } from '@/app/utils/cityMetadata'
 import type { Metadata } from 'next'
 
 export async function generateMetadata({
   params,
 }: {
-  params: {
-    city: string
-    slug: string
-  }
+  params: { city: string; slug: string }
 }): Promise<Metadata> {
   const meta = CITY_METADATA[params.city]
 
@@ -36,7 +24,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function Page({ params }: Props) {
+export default async function Page({ params }: { params: { city: string; slug: string } }) {
   const { slug } = params
 
   const payloadClient = await getPayload({ config })
@@ -64,7 +52,6 @@ export default async function Page({ params }: Props) {
       <BGraphic />
       <HeroPost post={post} />
       <FloatingNav blocks={post.layout ?? []} />
-
       {advantagesBlock && <AdvantagesBlock layout={post.layout} />}
       {stepsBlock && <StepsBlock layout={post.layout} />}
     </>
