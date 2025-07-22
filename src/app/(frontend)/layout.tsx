@@ -9,12 +9,6 @@ import ContactBlock from './_components/ContactBlock'
 import { Providers } from './_components/providers/provider'
 import Footer from './_components/Footer/Footer'
 
-export const metadata = {
-  description:
-    'Зачисление денег для подготовки рекламных кампаний на площадках Яндекс Маркет, Яндекс Директ, Google ADW, Тик Ток, ВКонтакте, Meta (Facebook, Instagram) на выгодных условиях для юридических лиц и ИП.',
-  title: 'Пополнение рекламных кабинетов',
-}
-
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 

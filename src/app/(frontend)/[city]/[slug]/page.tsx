@@ -14,6 +14,24 @@ interface Props {
   }>
 }
 
+import { CITY_METADATA } from '@/app/utils/cityMetadata'
+import type { Metadata } from 'next'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { city: string; slug: string }
+}): Promise<Metadata> {
+  const meta = CITY_METADATA[params.city]
+
+  return {
+    title: meta?.title || 'Пополнение рекламных кабинетов',
+    description:
+      meta?.description ||
+      'Зачисление денег для подготовки рекламных кампаний на Яндекс, Google, TikTok, Meta и других площадках.',
+  }
+}
+
 export default async function Page({ params }: Props) {
   const { slug } = await params
 
