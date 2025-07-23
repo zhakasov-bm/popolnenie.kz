@@ -7,6 +7,7 @@ import StepsBlock from '../../_components/StepsBlock'
 import HeroPost from './components/HeroPost'
 import AdvantagesBlock from '../../_components/AdvantagesBlock'
 import FloatingNav from '../../_components/FloatingNav'
+import { notFound } from 'next/navigation'
 
 interface Props {
   params: Promise<{
@@ -28,8 +29,8 @@ export default async function Page({ params }: Props) {
     },
   })
 
-  if (!postResult.docs.length) {
-    return <div className="text-center py-10 text-red-500">Post not found</div>
+  if (!postResult || postResult.totalDocs === 0) {
+    return notFound()
   }
 
   const post = postResult.docs[0]
@@ -37,6 +38,8 @@ export default async function Page({ params }: Props) {
   const advantagesBlock = post.layout?.find((block: any) => block.blockType === 'advantagesblock')
 
   const stepsBlock = post.layout?.find((block: any) => block.blockType === 'stepsblock')
+
+  if (!post) return notFound()
 
   return (
     <>

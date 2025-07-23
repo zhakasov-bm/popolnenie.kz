@@ -9,6 +9,8 @@ import StepsBlock from '../_components/StepsBlock'
 import ClientsBlock from '../_components/ClientsBlock'
 import TeamBlock from '../_components/TeamBlock'
 import ReviewsBlock from '../_components/ReviewsBlock'
+import { notFound } from 'next/navigation'
+import FloatingNav from '../_components/FloatingNav'
 
 export default async function CityPage() {
   const payloadConfig = await config
@@ -20,10 +22,13 @@ export default async function CityPage() {
   })
   const page = res.docs[0]
 
+  if (!page) return notFound()
+
   return (
     <div>
       <BGraphic />
       <HeroBlock page={page} />
+      <FloatingNav blocks={page.layout ?? []} />
       <AdvantagesBlock layout={page.layout} />
       <TarifBlock page={page} />
       <StepsBlock layout={page.layout} />

@@ -1,5 +1,6 @@
 import { getPayload } from 'payload'
 import React from 'react'
+import { notFound } from 'next/navigation'
 
 import config from '@/payload.config'
 import BGraphic from './_components/BGraphic'
@@ -21,6 +22,8 @@ export default async function HomePage() {
     limit: 1,
   })
   const page = res.docs[0]
+
+  if (!page) return notFound()
 
   return (
     <div>
