@@ -8,6 +8,7 @@ import { PiMapPinFill } from 'react-icons/pi'
 import { handleScroll } from '@/app/utils/scroll'
 import { Post } from '@/payload-types'
 import { FaPhoneAlt } from 'react-icons/fa'
+import { usePathname } from 'next/navigation'
 
 type Props = {
   toggleMobileMenu: () => void
@@ -40,6 +41,10 @@ export function MobileMenu({
       document.documentElement.style.overflow = ''
     }
   }, [isMobileOpen])
+
+  const pathname = usePathname()
+  const city = pathname.split('/')[1] || ''
+  const cityUrl = city ? `/${city}` : '/'
 
   return (
     isMobileOpen && (
@@ -81,7 +86,7 @@ export function MobileMenu({
             {/* Main nav links */}
             <ul className="flex flex-col gap-6 text-link text-lg font-unbounded">
               <li>
-                <Link href={'/'} className="hover:text-link" onClick={toggleMobileMenu}>
+                <Link href={cityUrl} className="hover:text-link" onClick={toggleMobileMenu}>
                   Главная
                 </Link>
               </li>

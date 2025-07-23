@@ -11,29 +11,28 @@ import { CITY_METADATA } from '@/app/utils/cityMetadata'
 import type { Metadata } from 'next'
 
 interface Props {
-  params: {
-    city: string
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { city: string; slug: string }
-}): Promise<Metadata> {
-  const meta = CITY_METADATA[params.city]
+// export async function generateMetadata({
+//   params,
+// }: {
+//   params: { city: string; slug: string }
+// }): Promise<Metadata> {
+//   const meta = CITY_METADATA[params.city]
 
-  return {
-    title: meta?.title || 'Пополнение рекламных кабинетов',
-    description:
-      meta?.description ||
-      'Зачисление денег для подготовки рекламных кампаний на Яндекс, Google, TikTok, Meta и других площадках.',
-  }
-}
+//   return {
+//     title: meta?.title || 'Пополнение рекламных кабинетов',
+//     description:
+//       meta?.description ||
+//       'Зачисление денег для подготовки рекламных кампаний на Яндекс, Google, TikTok, Meta и других площадках.',
+//   }
+// }
 
 export default async function Page({ params }: Props) {
-  const { slug } = params
+  const { slug } = await params
 
   const payloadClient = await getPayload({ config })
 

@@ -48,6 +48,9 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
     }
   }
 
+  const city = pathname.split('/')[1] || ''
+  const cityUrl = city ? `/${city}` : '/'
+
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLUListElement | null>(null)
 
@@ -64,7 +67,7 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
         <div className="hidden md:flex justify-around">
           <ul className="flex gap-6 text-link/70 cursor-pointer font-unbounded">
             <li>
-              <Link href={'/'} className="hover:text-link">
+              <Link href={cityUrl} className="hover:text-link">
                 Главная
               </Link>
             </li>
