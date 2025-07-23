@@ -1,5 +1,3 @@
-// app/posts/[slug]/page.tsx
-
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import BGraphic from '../../_components/BGraphic'
