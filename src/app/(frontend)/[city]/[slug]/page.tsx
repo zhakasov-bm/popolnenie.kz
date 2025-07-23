@@ -10,6 +10,12 @@ import { notFound } from 'next/navigation'
 import { CITY_METADATA } from '@/app/utils/cityMetadata'
 import type { Metadata } from 'next'
 
+interface Props {
+  params: Promise<{
+    slug: string
+  }>
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -25,8 +31,8 @@ export async function generateMetadata({
   }
 }
 
-export default async function Page({ params }: { params: { city: string; slug: string } }) {
-  const { slug } = params
+export default async function Page({ params }: Props) {
+  const { slug } = await params
 
   const payloadClient = await getPayload({ config })
 

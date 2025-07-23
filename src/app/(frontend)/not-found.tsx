@@ -1,6 +1,5 @@
 'use client'
 import { usePathname } from 'next/navigation'
-import { unbounded } from '../fonts'
 
 export default function NotFound() {
   const pathname = usePathname()
