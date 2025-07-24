@@ -7,56 +7,54 @@ import AdvantagesBlock from '../../_components/AdvantagesBlock'
 import FloatingNav from '../../_components/FloatingNav'
 import { notFound } from 'next/navigation'
 import { Post } from '@/payload-types'
+import { Metadata } from 'next'
 
 type Props = {
-  params: {
-    slug: string
-    city: string
-  }
+  params: Promise<{ slug: string }>
 }
 
 // Получаем пост по слагу
-async function getPost(slug: string): Promise<Post | null> {
-  const payload = await getPayload({ config })
-  const result = await payload.find({
-    collection: 'posts',
-    where: {
-      slug: {
-        equals: slug,
+async function getPost(slug: string): Promise<Post> {
+  try {
+    const payload = await getPayload({ config })
+    const result = await payload.find({
+      collection: 'posts',
+      where: {
+        slug: {
+          equals: slug,
+        },
       },
-    },
-  })
+    })
 
-  return result.docs?.[0] || null
+    return result.docs?.[0]
+  } catch (error) {
+    console.error('Error fetching post:', error)
+    throw error
+  }
 }
 
 // Метаданные страницы
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getPost(params.slug)
-
-  if (!post) {
-    return {
-      title: 'Пост не найден',
-    }
-  }
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+  const { slug } = await params
+  const post = await getPost(slug)
 
   return {
-    title: post.heading,
-    description: post?.subheading || '',
+    title: `${post.name}`,
+    // description: post.subheading.substring(0, 160),
   }
 }
 
 export default async function Page({ params }: Props) {
-  const post = await getPost(params.slug)
+  const { slug } = await params
 
-  if (!post) return notFound()
+  const post = await getPost(slug)
 
-  // const post = postResult.docs[0]
+  if (!post) {
+    notFound()
+  }
 
   const advantagesBlock = post.layout?.find((block: any) => block.blockType === 'advantagesblock')
   const stepsBlock = post.layout?.find((block: any) => block.blockType === 'stepsblock')
-
-  if (!post) return notFound()
 
   return (
     <>

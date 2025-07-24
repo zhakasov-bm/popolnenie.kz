@@ -13,7 +13,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: {
     default: 'Пополнение рекламных кабинетов',
-    template: '%s - Пополнение рекламных кабинетов',
+    template: '%s | Пополнение рекламных кабинетов',
   },
   description:
     'Зачисление денег для подготовки рекламных кампаний на площадках Яндекс Маркет, Яндекс Директ, Google ADW, Тик Ток, ВКонтакте, Meta (Facebook, Instagram) на выгодных условиях для юридических лиц и ИП.',
