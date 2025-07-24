@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "almaty",
+    "nameRU": "Алматы",
+    "prepositionalRU": "в Алматы",
+    "isPopular": true
+  },
+  {
+    "slug": "astana",
+    "nameRU": "Астана",
+    "prepositionalRU": "в Астане",
+    "isPopular": true
+  },
+  {
+    "slug": "shymkent",
+    "nameRU": "Шымкент",
+    "prepositionalRU": "в Шымкенте",
+    "isPopular": true
+  },
+  {
+    "slug": "aktobe",
+    "nameRU": "Актобе",
+    "prepositionalRU": "в Актобе",
+    "isPopular": true
+  },
+  {
+    "slug": "aktau",
+    "nameRU": "Актау",
+    "prepositionalRU": "в Актау",
+    "isPopular": true
+  },
+  {
+    "slug": "atyrau",
+    "nameRU": "Атырау",
+    "prepositionalRU": "в Атырау",
+    "isPopular": true
+  },
+  {
+    "slug": "taraz",
+    "nameRU": "Тараз",
+    "prepositionalRU": "в Таразе",
+    "isPopular": true
+  },
+  {
+    "slug": "talgar",
+    "nameRU": "Талгар",
+    "prepositionalRU": "в Талгаре",
+    "isPopular": true
+  },
+  {
+    "slug": "kyzylorda",
+    "nameRU": "Кызылорда",
+    "prepositionalRU": "в Кызылорде",
+    "isPopular": true
+  },
+  {
+    "slug": "kostanay",
+    "nameRU": "Костанай",
+    "prepositionalRU": "в Костанае",
+    "isPopular": true
+  },
+  {
+    "slug": "dubai",
+    "nameRU": "Дубай",
+    "prepositionalRU": "в Дубае",
+    "isPopular": true
+  },
+  {
+    "slug": "batumi",
+    "nameRU": "Батуми",
+    "prepositionalRU": "в Батуми",
+    "isPopular": true
+  }
+]
