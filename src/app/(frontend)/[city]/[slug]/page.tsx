@@ -6,37 +6,19 @@ import HeroPost from './components/HeroPost'
 import AdvantagesBlock from '../../_components/AdvantagesBlock'
 import FloatingNav from '../../_components/FloatingNav'
 import { notFound } from 'next/navigation'
+import { Post } from '@/payload-types'
 
-import { CITY_METADATA } from '@/app/utils/cityMetadata'
-import type { Metadata } from 'next'
-
-interface Props {
-  params: Promise<{
+type Props = {
+  params: {
     slug: string
-  }>
+    city: string
+  }
 }
 
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: { city: string; slug: string }
-// }): Promise<Metadata> {
-//   const meta = CITY_METADATA[params.city]
-
-//   return {
-//     title: meta?.title || 'Пополнение рекламных кабинетов',
-//     description:
-//       meta?.description ||
-//       'Зачисление денег для подготовки рекламных кампаний на Яндекс, Google, TikTok, Meta и других площадках.',
-//   }
-// }
-
-export default async function Page({ params }: Props) {
-  const { slug } = await params
-
-  const payloadClient = await getPayload({ config })
-
-  const postResult = await payloadClient.find({
+// Получаем пост по слагу
+async function getPost(slug: string): Promise<Post | null> {
+  const payload = await getPayload({ config })
+  const result = await payload.find({
     collection: 'posts',
     where: {
       slug: {
@@ -45,11 +27,31 @@ export default async function Page({ params }: Props) {
     },
   })
 
-  if (!postResult || postResult.totalDocs === 0) {
-    return notFound()
+  return result.docs?.[0] || null
+}
+
+// Метаданные страницы
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await getPost(params.slug)
+
+  if (!post) {
+    return {
+      title: 'Пост не найден',
+    }
   }
 
-  const post = postResult.docs[0]
+  return {
+    title: post.heading,
+    description: post?.subheading || '',
+  }
+}
+
+export default async function Page({ params }: Props) {
+  const post = await getPost(params.slug)
+
+  if (!post) return notFound()
+
+  // const post = postResult.docs[0]
 
   const advantagesBlock = post.layout?.find((block: any) => block.blockType === 'advantagesblock')
   const stepsBlock = post.layout?.find((block: any) => block.blockType === 'stepsblock')
