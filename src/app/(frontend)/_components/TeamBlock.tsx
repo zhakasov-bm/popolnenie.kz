@@ -1,4 +1,5 @@
 import { Page } from '@/payload-types'
+import { RichText } from '@payloadcms/richtext-lexical/react'
 import Image from 'next/image'
 
 export default function TeamBlock({ page }: { page: Page }) {
@@ -10,7 +11,7 @@ export default function TeamBlock({ page }: { page: Page }) {
             <div key={id}>
               <h2>{block.heading}</h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-1 py-5">
+              <div className="flex flex-col md:overflow-x-auto w-full md:flex-row gap-16 py-5">
                 {block.members?.map((item, idx) => {
                   return (
                     <div key={idx} className="flex flex-col items-center text-center">
@@ -26,7 +27,9 @@ export default function TeamBlock({ page }: { page: Page }) {
                           />
                         )}
                       </div>
-                      <p className="mt-4 font-unbounded text-lg">{item.name}</p>
+                      <div className="mt-4 team-richtext">
+                        <RichText data={item.name} />
+                      </div>
                     </div>
                   )
                 })}

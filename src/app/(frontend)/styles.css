@@ -125,3 +125,18 @@ h2 {
   @apply text-sm md:text-lg md:pt-4 md:text-2xl font-light text-center text-link/80
 }
 
+.team-richtext h6 {
+  @apply font-unbounded text-lg font-normal mb-2;
+}
+
+.team-richtext p {
+  @apply font-unbounded text-base text-link/80;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

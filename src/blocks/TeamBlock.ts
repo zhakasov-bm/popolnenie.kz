@@ -22,7 +22,7 @@ export const TeamBlock: Block = {
         },
         {
           name: 'name',
-          type: 'text',
+          type: 'richText',
           required: true,
         },
       ],
