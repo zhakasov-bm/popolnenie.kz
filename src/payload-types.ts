@@ -562,6 +562,7 @@ export interface Post {
     };
     [k: string]: unknown;
   };
+  description: string;
   button?: string | null;
   slug: string;
   content?: {
@@ -932,6 +933,7 @@ export interface PostsSelect<T extends boolean = true> {
   name?: T;
   heading?: T;
   subheading?: T;
+  description?: T;
   button?: T;
   slug?: T;
   content?: T;

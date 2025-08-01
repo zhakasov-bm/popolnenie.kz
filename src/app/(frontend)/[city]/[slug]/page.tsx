@@ -40,7 +40,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
   return {
     title: `${post.name}`,
-    // description: post.subheading.substring(0, 160),
+    description: post.description.substring(0, 160),
   }
 }
 

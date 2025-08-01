@@ -22,6 +22,12 @@ export const Posts: CollectionConfig = {
       label: 'Подзаголовок',
     },
     {
+      name: 'description',
+      type: 'text',
+      required: true,
+      label: 'Мета-описание',
+    },
+    {
       name: 'button',
       type: 'text',
       defaultValue: 'Заказать',
