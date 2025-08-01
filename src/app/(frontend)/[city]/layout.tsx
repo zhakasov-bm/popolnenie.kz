@@ -3,11 +3,11 @@
 import { Metadata } from 'next/dist/lib/metadata/types/metadata-interface'
 import React from 'react'
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { city: string }
-}): Promise<Metadata> {
+type Props = {
+  params: Promise<{ city: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { city } = await params
   return {
     title: {
