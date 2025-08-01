@@ -5,12 +5,12 @@ import StepsBlock from '../../_components/StepsBlock'
 import HeroPost from './components/HeroPost'
 import AdvantagesBlock from '../../_components/AdvantagesBlock'
 import FloatingNav from '../../_components/FloatingNav'
-import { notFound } from 'next/navigation'
+import { notFound, usePathname } from 'next/navigation'
 import { Post } from '@/payload-types'
 import { Metadata } from 'next'
 
 type Props = {
-  params: Promise<{ slug: string }>
+  params: Promise<{ city: string; slug: string }>
 }
 
 // Получаем пост по слагу
@@ -35,12 +35,15 @@ async function getPost(slug: string): Promise<Post> {
 
 // Метаданные страницы
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
-  const { slug } = await params
+  const { slug, city } = await params
   const post = await getPost(slug)
 
   return {
     title: `${post.name}`,
     description: post.description.substring(0, 160),
+    alternates: {
+      canonical: `https://popolnenie.kz/${city}/${slug}`,
+    },
   }
 }
 
