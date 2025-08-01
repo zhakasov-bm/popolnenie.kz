@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://popolnenie.kz
+
+# Sitemaps
+Sitemap: https://popolnenie.kz/sitemap.xml
