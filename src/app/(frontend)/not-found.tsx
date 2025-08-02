@@ -3,11 +3,13 @@
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Head from 'next/head'
+import { ALLOWED_CITIES } from '../utils/cities'
 
 export default function NotFound() {
   const pathname = usePathname()
-  const city = pathname.split('/')[1] || ''
-  const cityUrl = city ? `/${city}` : '/'
+  const pathCity = pathname.split('/')[1] || ''
+  const isValidCity = ALLOWED_CITIES.includes(pathCity)
+  const cityUrl = isValidCity ? `/${pathCity}` : '/'
 
   return (
     <>

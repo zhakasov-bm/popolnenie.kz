@@ -4,6 +4,7 @@ type CityInfo = {
 }
 
 export const CITIES: Record<string, CityInfo> = {
+  default: { ru: '', prepositional: '' },
   almaty: { ru: 'Алматы', prepositional: 'в Алматы' },
   astana: { ru: 'Астана', prepositional: 'в Астане' },
   shymkent: { ru: 'Шымкент', prepositional: 'в Шымкенте' },

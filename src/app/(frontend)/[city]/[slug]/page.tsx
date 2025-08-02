@@ -8,6 +8,7 @@ import FloatingNav from '../../_components/FloatingNav'
 import { notFound, usePathname } from 'next/navigation'
 import { Post } from '@/payload-types'
 import { Metadata } from 'next'
+import { ALLOWED_CITIES } from '@/app/utils/cities'
 
 type Props = {
   params: Promise<{ city: string; slug: string }>
@@ -36,7 +37,16 @@ async function getPost(slug: string): Promise<Post> {
 // Метаданные страницы
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
   const { slug, city } = await params
+
+  if (!ALLOWED_CITIES.includes(city)) {
+    notFound()
+  }
+
   const post = await getPost(slug)
+
+  if (!post) {
+    notFound()
+  }
 
   return {
     title: `${post.name}`,
@@ -48,7 +58,11 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 }
 
 export default async function Page({ params }: Props) {
-  const { slug } = await params
+  const { slug, city } = await params
+
+  if (!ALLOWED_CITIES.includes(city)) {
+    notFound()
+  }
 
   const post = await getPost(slug)
 

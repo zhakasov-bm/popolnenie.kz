@@ -8,7 +8,7 @@ import { PiMapPinFill } from 'react-icons/pi'
 import { FaPhoneAlt } from 'react-icons/fa'
 
 import { useCurrentCity } from '@/app/utils/useCurrentCity'
-import { CITY_RU, getCityRegex } from '@/app/utils/cities'
+import { ALLOWED_CITIES, CITY_RU, getCityRegex } from '@/app/utils/cities'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { CityModal } from './CityModal'
@@ -48,8 +48,9 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
     }
   }
 
-  const city = pathname.split('/')[1] || ''
-  const cityUrl = city ? `/${city}` : '/'
+  const pathCity = pathname.split('/')[1] || ''
+  const isValidCity = ALLOWED_CITIES.includes(pathCity)
+  const cityUrl = isValidCity ? `/${pathCity}` : '/'
 
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLUListElement | null>(null)

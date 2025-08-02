@@ -4,6 +4,8 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone()
 
+  console.log('Middleware hostname:', url.hostname)
+
   // Force HTTPS
   if (request.headers.get('x-forwarded-proto') === 'http') {
     url.protocol = 'https:'
@@ -20,5 +22,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/:path*'],
 }

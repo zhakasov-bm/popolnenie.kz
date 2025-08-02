@@ -11,10 +11,21 @@ import TeamBlock from '../_components/TeamBlock'
 import ReviewsBlock from '../_components/ReviewsBlock'
 import { notFound } from 'next/navigation'
 import FloatingNav from '../_components/FloatingNav'
+import { ALLOWED_CITIES } from '@/app/utils/cities'
 
-export default async function CityPage() {
+type Props = {
+  params: { city: string }
+}
+
+export default async function CityPage({ params }: Props) {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
+
+  const { city } = await params
+
+  if (!ALLOWED_CITIES.includes(city)) {
+    notFound()
+  }
 
   const res = await payload.find({
     collection: 'pages',
