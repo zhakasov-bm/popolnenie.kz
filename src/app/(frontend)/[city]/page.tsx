@@ -13,11 +13,7 @@ import { notFound } from 'next/navigation'
 import FloatingNav from '../_components/FloatingNav'
 import { ALLOWED_CITIES } from '@/app/utils/cities'
 
-type Props = {
-  params: { city: string }
-}
-
-export default async function CityPage({ params }: Props) {
+export default async function CityPage({ params }: { params: { city: string } }) {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
 

@@ -3,8 +3,12 @@ import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone()
+  const hostname = url.hostname
+  if (hostname === 'localhost' || hostname.startsWith('127.') || hostname === '::1') {
+    return NextResponse.next()
+  }
 
-  console.log('Middleware hostname:', url.hostname)
+  console.log('Middleware hostname:', hostname)
 
   // Force HTTPS
   if (request.headers.get('x-forwarded-proto') === 'http') {
