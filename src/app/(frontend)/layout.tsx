@@ -38,7 +38,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const page = res.docs[0]
 
   return (
-    <html lang="en" className={`${unbounded.variable} ${montserrat.variable} ${inter.variable}`}>
+    <html lang="ru" className={`${unbounded.variable} ${montserrat.variable} ${inter.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
