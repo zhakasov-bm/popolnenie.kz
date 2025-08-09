@@ -1,4 +1,5 @@
 import { ApplicationFormBlock } from '@/blocks/ApplicationFormBlock'
+import { ArticleBlock } from '@/blocks/ArticleBlock'
 import { BrandsBlock } from '@/blocks/BrandsBlock'
 import { ContactBlock } from '@/blocks/ContactBlock'
 import { HeroBlock } from '@/blocks/HeroBlock'
@@ -28,6 +29,7 @@ export const Pages: CollectionConfig = {
         TeamBlock,
         ReviewsBlock,
         BrandsBlock,
+        ArticleBlock,
         ApplicationFormBlock,
         ContactBlock,
         ...sharedBlocks,

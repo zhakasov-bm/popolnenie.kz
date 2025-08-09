@@ -12,6 +12,7 @@ import TeamBlock from './_components/TeamBlock'
 import ClientsBlock from './_components/ClientsBlock'
 import ReviewsBlock from './_components/ReviewsBlock'
 import FloatingNav from './_components/FloatingNav'
+import ArticleSection from './_components/ArticleSection'
 
 export const metadata = {
   openGraph: {
@@ -61,6 +62,7 @@ export default async function HomePage() {
       <TeamBlock page={page} />
       <ReviewsBlock page={page} />
       <ClientsBlock page={page} />
+      <ArticleSection page={page} />
     </div>
   )
 }

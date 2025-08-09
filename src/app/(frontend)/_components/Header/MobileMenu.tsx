@@ -131,6 +131,11 @@ export function MobileMenu({
                   Контакты
                 </Link>
               </li>
+              <li>
+                <Link href={'/articles'} className="hover:text-link">
+                  Блог
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -10,14 +10,14 @@ export const Logo = () => {
 
   const logo = resolvedTheme === 'dark' ? '/logo-dark.svg' : '/logo.svg'
 
-  const pathname = usePathname()
-  const city = pathname.split('/')[1] || ''
-  const cityUrl = city ? `/${city}` : '/'
+  // const pathname = usePathname()
+  // const city = pathname.split('/')[1] || ''
+  // const cityUrl = city ? `/${city}` : '/'
 
   if (!resolvedTheme) return null
 
   return (
-    <Link href={cityUrl}>
+    <Link href={'/'}>
       <Image src={logo} alt="simply-logo" width={120} height={50} draggable={false} />
     </Link>
   )

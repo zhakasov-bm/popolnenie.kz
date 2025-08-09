@@ -112,6 +112,11 @@ const Navbar: React.FC<NavbarProps> = ({ posts }) => {
                 Контакты
               </Link>
             </li>
+            <li>
+              <Link href={'/articles'} className="hover:text-link">
+                Блог
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

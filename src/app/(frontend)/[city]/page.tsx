@@ -13,6 +13,7 @@ import { notFound } from 'next/navigation'
 import FloatingNav from '../_components/FloatingNav'
 import { ALLOWED_CITIES } from '@/app/utils/cities'
 import { Metadata } from 'next'
+import ArticleSection from '../_components/ArticleSection'
 
 type Props = {
   params: Promise<{ city: string }>
@@ -81,6 +82,7 @@ export default async function CityPage({ params }: Props) {
       <ReviewsBlock page={page} />
 
       <ClientsBlock page={page} />
+      <ArticleSection page={page} />
     </div>
   )
 }
