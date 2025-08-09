@@ -3,6 +3,10 @@ import { sharedBlocks } from '@/blocks/sharedBlocks'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
+  labels: {
+    singular: 'Услуга',
+    plural: 'Услуги',
+  },
   fields: [
     {
       name: 'name',
