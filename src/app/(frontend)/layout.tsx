@@ -22,20 +22,23 @@ export const metadata: Metadata = {
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
-  // Fetch posts for the header navigation
   const payload = await getPayload({ config })
-  const postsResult = await payload.find({
-    collection: 'posts',
-    sort: 'createdAt',
-    limit: 10,
-  })
-  const posts = postsResult.docs
 
-  const res = await payload.find({
-    collection: 'pages',
-    limit: 1,
-  })
-  const page = res.docs[0]
+  // Параллельно запросы
+  const [postsResult, pagesResult] = await Promise.all([
+    payload.find({
+      collection: 'posts',
+      sort: 'createdAt',
+      limit: 10,
+    }),
+    payload.find({
+      collection: 'pages',
+      limit: 1,
+    }),
+  ])
+
+  const posts = postsResult.docs
+  const page = pagesResult.docs[0]
 
   return (
     <html lang="ru" className={`${unbounded.variable} ${montserrat.variable} ${inter.variable}`}>

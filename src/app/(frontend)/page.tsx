@@ -13,6 +13,30 @@ import ClientsBlock from './_components/ClientsBlock'
 import ReviewsBlock from './_components/ReviewsBlock'
 import FloatingNav from './_components/FloatingNav'
 
+export const metadata = {
+  openGraph: {
+    title: 'Пополнение рекламных кабинетов',
+    description:
+      'Зачисление денег для подготовки рекламных кампаний на площадках Яндекс Маркет, Яндекс Директ, Google ADW, Тик Ток, ВКонтакте, Meta (Facebook, Instagram) на выгодных условиях для юридических лиц и ИП.',
+    url: 'https://popolnenie.kz',
+    images: [
+      {
+        url: 'https://popolnenie.kz/company-og.jpg',
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Пополнение рекламных кабинетов',
+    description:
+      'Зачисление денег для подготовки рекламных кампаний на площадках Яндекс Маркет, Яндекс Директ, Google ADW, Тик Ток, ВКонтакте, Meta (Facebook, Instagram) на выгодных условиях для юридических лиц и ИП.',
+    images: ['https://popolnenie.kz/company-og.jpg'],
+  },
+}
+
 export default async function HomePage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })

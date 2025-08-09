@@ -12,9 +12,42 @@ import ReviewsBlock from '../_components/ReviewsBlock'
 import { notFound } from 'next/navigation'
 import FloatingNav from '../_components/FloatingNav'
 import { ALLOWED_CITIES } from '@/app/utils/cities'
+import { Metadata } from 'next'
 
 type Props = {
   params: Promise<{ city: string }>
+}
+
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+  const { city } = await params
+
+  if (!ALLOWED_CITIES.includes(city)) {
+    notFound()
+  }
+
+  return {
+    openGraph: {
+      title: 'Пополнение рекламных кабинетов',
+      description:
+        'Зачисление денег для подготовки рекламных кампаний на площадках Яндекс Маркет, Яндекс Директ, Google ADW, Тик Ток, ВКонтакте, Meta (Facebook, Instagram) на выгодных условиях для юридических лиц и ИП.',
+      url: `https://popolnenie.kz/${city}`,
+      images: [
+        {
+          url: 'https://popolnenie.kz/company-og.jpg',
+          width: 1200,
+          height: 630,
+        },
+      ],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Пополнение рекламных кабинетов',
+      description:
+        'Зачисление денег для подготовки рекламных кампаний на площадках Яндекс Маркет, Яндекс Директ, Google ADW, Тик Ток, ВКонтакте, Meta (Facebook, Instagram) на выгодных условиях для юридических лиц и ИП.',
+      images: ['https://popolnenie.kz/company-og.jpg'],
+    },
+  }
 }
 
 export default async function CityPage({ params }: Props) {
