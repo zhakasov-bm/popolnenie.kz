@@ -46,7 +46,7 @@ export default async function HomePage() {
     collection: 'pages',
     limit: 1,
   })
-
+  //
   const page = res.docs[0]
 
   if (!page) return notFound()
