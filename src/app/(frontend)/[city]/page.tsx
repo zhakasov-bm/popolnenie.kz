@@ -1,4 +1,6 @@
 import { getPayload } from 'payload'
+import { headers as getHeaders } from 'next/headers'
+
 import React from 'react'
 import config from '@/payload.config'
 import BGraphic from '../_components/BGraphic'
@@ -54,6 +56,8 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 export default async function CityPage({ params }: Props) {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
+  const headers = await getHeaders()
+  const { user } = await payload.auth({ headers })
 
   const { city } = await params
 
@@ -64,6 +68,7 @@ export default async function CityPage({ params }: Props) {
   const res = await payload.find({
     collection: 'pages',
     limit: 1,
+    user,
   })
   const page = res.docs[0]
 

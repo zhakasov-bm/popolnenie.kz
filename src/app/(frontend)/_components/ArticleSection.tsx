@@ -1,13 +1,17 @@
 import Link from 'next/link'
 import config from '@/payload.config'
 import { getPayload } from 'payload'
+import { headers as getHeaders } from 'next/headers'
+
 import { formatDate } from '@/app/utils/date'
 import { Page } from '@/payload-types'
-import { useCurrentCity } from '@/app/utils/useCurrentCity'
 
 export default async function ArticleSection({ page }: { page: Page }) {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
+  const headers = await getHeaders()
+  const { user } = await payload.auth({ headers })
+
   const articles = await payload.find({
     collection: 'articles',
     limit: 2,
@@ -17,6 +21,7 @@ export default async function ArticleSection({ page }: { page: Page }) {
         equals: true,
       },
     },
+    user,
   })
 
   const article = articles.docs

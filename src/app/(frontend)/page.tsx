@@ -1,4 +1,6 @@
 import { getPayload } from 'payload'
+import { headers as getHeaders } from 'next/headers'
+
 import React from 'react'
 import { notFound } from 'next/navigation'
 
@@ -41,12 +43,14 @@ export const metadata = {
 export default async function HomePage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
+  const headers = await getHeaders()
+  const { user } = await payload.auth({ headers })
 
   const res = await payload.find({
     collection: 'pages',
     limit: 1,
+    user,
   })
-  //
   const page = res.docs[0]
 
   if (!page) return notFound()

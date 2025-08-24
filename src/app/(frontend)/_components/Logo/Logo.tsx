@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
-import { usePathname } from 'next/navigation'
+// import { usePathname } from 'next/navigation'
 
 export const Logo = () => {
   const { resolvedTheme } = useTheme()

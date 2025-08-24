@@ -1,4 +1,6 @@
 import { getPayload } from 'payload'
+import { headers as getHeaders } from 'next/headers'
+
 import config from '@/payload.config'
 import ArticleCard from './components/ArticleCard'
 import BGraphic from '../_components/BGraphic'
@@ -6,6 +8,8 @@ import BGraphic from '../_components/BGraphic'
 export default async function page() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
+  const headers = await getHeaders()
+  const { user } = await payload.auth({ headers })
 
   const articles = await payload.find({
     collection: 'articles',
@@ -15,6 +19,7 @@ export default async function page() {
         equals: true,
       },
     },
+    user,
   })
 
   return (

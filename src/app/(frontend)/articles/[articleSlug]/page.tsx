@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import config from '@/payload.config'
 import { getPayload } from 'payload'
+import { headers as getHeaders } from 'next/headers'
+
 import ArticleBlock from './components/ArticleBlock'
 import { getArticle } from '@/app/utils/getArticleData'
 
@@ -53,6 +55,8 @@ export default async function Page({ params }: Props) {
 
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
+  const headers = await getHeaders()
+  const { user } = await payload.auth({ headers })
 
   const articles = await payload.find({
     collection: 'articles',
@@ -63,6 +67,7 @@ export default async function Page({ params }: Props) {
         equals: true,
       },
     },
+    user,
   })
 
   return (

@@ -1,4 +1,6 @@
 import { getPayload } from 'payload'
+import { headers as getHeaders } from 'next/headers'
+
 import config from '@/payload.config'
 import BGraphic from '../../_components/BGraphic'
 import StepsBlock from '../../_components/StepsBlock'
@@ -18,6 +20,9 @@ type Props = {
 async function getPost(slug: string): Promise<Post> {
   try {
     const payload = await getPayload({ config })
+    const headers = await getHeaders()
+    const { user } = await payload.auth({ headers })
+
     const result = await payload.find({
       collection: 'posts',
       where: {
@@ -25,6 +30,7 @@ async function getPost(slug: string): Promise<Post> {
           equals: slug,
         },
       },
+      user,
     })
 
     return result.docs?.[0]

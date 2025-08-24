@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { RichText as SerializedRichText } from '@payloadcms/richtext-lexical/react'
 import Link from 'next/link'
 import { formatDate } from '@/app/utils/date'
-import { useCurrentCity } from '@/app/utils/useCurrentCity'
 
 type Props = {
   articles: Article[]

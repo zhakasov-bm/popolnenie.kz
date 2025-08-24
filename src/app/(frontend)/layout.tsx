@@ -1,5 +1,7 @@
 import React from 'react'
 import { getPayload } from 'payload'
+import { headers as getHeaders } from 'next/headers'
+
 import config from '@/payload.config'
 import Header from './_components/Header/Header'
 import './styles.css'
@@ -23,6 +25,8 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   const payload = await getPayload({ config })
+  const headers = await getHeaders()
+  const { user } = await payload.auth({ headers })
 
   // Параллельно запросы
   const [postsResult, pagesResult] = await Promise.all([
@@ -30,10 +34,12 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
       collection: 'posts',
       sort: 'createdAt',
       limit: 10,
+      user,
     }),
     payload.find({
       collection: 'pages',
       limit: 1,
+      user,
     }),
   ])
 
