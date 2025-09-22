@@ -30,7 +30,7 @@ export default function ApplicationFormBlock({ page }: { page: Page }) {
 
     try {
       const formData = new FormData(e.target as HTMLFormElement)
-      // manually set phone value from state
+      // manually set phone value from state 23.09
       formData.set('phone', phone)
       const data = Object.fromEntries(formData.entries()) as Record<string, string>
 
